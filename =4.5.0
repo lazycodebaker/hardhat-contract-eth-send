@@ -1,0 +1,35 @@
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Progress: resolved 8, reused 8, downloaded 0, added 0
+Progress: resolved 11, reused 11, downloaded 0, added 0
+Progress: resolved 78, reused 78, downloaded 0, added 0
+Progress: resolved 324, reused 324, downloaded 0, added 0
+Progress: resolved 396, reused 387, downloaded 0, added 0
+Progress: resolved 444, reused 435, downloaded 0, added 0
+Progress: resolved 501, reused 492, downloaded 0, added 0
+Progress: resolved 515, reused 506, downloaded 0, added 0
+Progress: resolved 537, reused 528, downloaded 0, added 0
+Packages: +236 -1
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+Progress: resolved 540, reused 531, downloaded 0, added 3
+Progress: resolved 540, reused 531, downloaded 0, added 236, done
+
+devDependencies:
++ @nomicfoundation/hardhat-chai-matchers 2.0.3
++ @nomicfoundation/hardhat-ethers 3.0.5
++ @nomicfoundation/hardhat-network-helpers 1.0.10
++ @nomicfoundation/hardhat-toolbox 4.0.0
++ @nomicfoundation/hardhat-verify 2.0.3
++ @typechain/ethers-v6 0.5.1
++ @typechain/hardhat 9.1.0
++ @types/chai 4.3.11
++ @types/mocha 10.0.6
++ @types/node 20.11.7
++ chai 4.4.1 (5.0.3 is available)
++ ethers 6.10.0
++ hardhat-gas-reporter 1.0.9
++ solidity-coverage 0.8.5
++ ts-node 10.9.2
++ typechain 8.3.2
++ typescript 5.3.3
+
+Done in 11.8s

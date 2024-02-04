@@ -1,0 +1,38 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ninterface AggregatorV3Interface {\n  function decimals() external view returns (uint8);\n\n  function description() external view returns (string memory);\n\n  function version() external view returns (uint256);\n\n  function getRoundData(\n    uint80 _roundId\n  ) external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);\n\n  function latestRoundData()\n    external\n    view\n    returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);\n}\n"
+    },
+    "contracts/Payable.sol": {
+      "content": "// SPDX-License-Identifier: GPL-3.0\n\npragma solidity ^0.8.0;\n\nimport \"@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol\";\n\ncontract Payable { \n\n    address payable public owner;\n    address public ETH_to_USD;\n\n    AggregatorV3Interface internal priceFeed;\n\n    constructor() { \n        owner = payable (msg.sender);\n        ETH_to_USD =  0x694AA1769357215DE4FAC081bf1f309aDC325306;\n        priceFeed = AggregatorV3Interface(ETH_to_USD);\n    }\n\n    function getConversionRate() public view returns (uint256) { }\n\n    function getLatestPrice() public view returns (uint256) {\n        ( ,int256 price,,,) = priceFeed.latestRoundData();\n        return uint256(price * 1e10);\n    }\n\n    function sendViaCall(address payable _to) public payable {\n        // Call returns a boolean value indicating success or failure.\n        // This is the current recommended method to use.\n        (bool sent, ) = _to.call{value: address(this).balance}(\"\");\n        require(sent, \"Failed to send Ether\");\n    }\n\n    function getOwnerBalance() public view returns (uint256) {\n        return owner.balance;\n    }  \n\n    function getContractBalance() public  view returns (uint256) { \n        return address(this).balance;\n    }\n\n    receive() external payable { }\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
